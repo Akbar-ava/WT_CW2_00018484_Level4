@@ -10,22 +10,22 @@ const app = express();
 
 global.cw_db = path.join(__dirname, './data/cw_db.json');
 
-// Middleware to parse JSON and URL-encoded bodies
+// middleware to parse json
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Set Pug as the view engine and point to the views folder
+// setting pug like view engine to read html code
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// Serve static files (for CSS/JS)
+// using static files css,js
 app.use('/css', express.static('public/styles'));
 app.use('/js', express.static('public/javascripts'));
 
-// Use API and web routes
+// using api's
 app.use('/api', indexRoutes);
 app.use('/', webRoutes);
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
+    console.log(`Server running at http://localhost:${port}/goal`);
 });

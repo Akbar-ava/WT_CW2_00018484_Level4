@@ -1,82 +1,83 @@
 const fs = require('fs');
+
 const path = require('path');
 
 if (!global.cw_db) {
   global.cw_db = path.join(__dirname, '../data', 'cw_db.json');
 }
 
-const users = require(global.cw_db);
+const goals = require(global.cw_db);
 
-const userService = {
-  // get all students
+const goalService = {
+  // get all goals list
   get(req, res) {
-    return users;
+    return goals;
   },
 
-  // get a student by ID
+  // get a goal by id
   getById(req, res) {
     const id = req.params.id;
-    return users.find(item => item.id === id);
+    return goals.find(item => item.id === id);
   },
 
-  // insert a new student
+  // create a new goal
   insert(req, res) {
     let new_id = genRandId(4);
     const body = req.body;  
   
-    const user = {
+    const goal = {
       id: new_id,
       weight: body.weight,
       goal: body.goal,
       description: body.description
     };
   
-    users.push(user);     
-    writeToFile(users);
+    goals.push(goal);     
+    writeToFile(goals);
   
-    return user;
+    return goal;
   },
 
-  // update an existing student
+  // update an existing goal
   update(req, res) {
     const id = req.params.id;
-    const index = users.findIndex(item => item.id === id);
+    const index = goals.findIndex(item => item.id === id);
     if (index === -1) {
-      return null; // eroor if user is not found
+      return null; // eroor if goal is not found
     }
   
-    users[index].weight = req.body.weight;
-    users[index].goal = req.body.goal;
-    users[index].description = req.body.description;
+    goals[index].weight = req.body.weight;
+    goals[index].goal = req.body.goal;
+    goals[index].description = req.body.description;
   
-    writeToFile(users);
+    writeToFile(goals);
   
-    return users[index];
+    return goals[index];
   },
 
-  // deleting a user
+  // deleting a goal
   delete(req, res) {
     const id = req.params.id;
-    const index = users.findIndex(item => item.id === id);
+    const index = goals.findIndex(item => item.id === id);
     if (index === -1) {
       return false;
     }
-    users.splice(index, 1);
-    writeToFile(users);
+    goals.splice(index, 1);
+    writeToFile(goals);
     return true;
   }
 };
 
-// function for overwriting the json file with updated student data
-let writeToFile = async (users) => {
+// function for overwriting the existing json file to update the goal 
+let writeToFile = async (goals) => {
   await fs.writeFileSync(
     global.cw_db,
-    JSON.stringify(users, null, 4),
+    JSON.stringify(goals, null, 4),
     'utf8'
   );
 };
 
-// generate a random id (similar to a simplified UUID)
+// generate a random id using only digits
 let genRandId = (count) => {
   let result = '';
   const characters = '0123456789';
@@ -87,4 +88,4 @@ let genRandId = (count) => {
   return result;
 };
 
-module.exports = userService;
+module.exports = goalService;

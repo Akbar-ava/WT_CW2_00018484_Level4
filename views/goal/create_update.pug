@@ -2,12 +2,12 @@ extends ../head.pug
 
 block content
   .container.mt-4
-    - var formAction = user && user.id ? `/api/user/update/${user.id}` : '/api/user/create'
-    - var formTitle = user && user.id ? 'Update User' : 'Create Goal'
+    - var formAction = goal && goal.id ? `/api/goal/update/${goal.id}` : '/api/goal/create'
+    - var formTitle = goal && goal.id ? 'Update goal' : 'Create Goal'
     // Determine field values
-    - var uWeight = user ? (user.user ? user.user.weight : user.weight) : ''
-    - var uGoal = user ? (user.user ? user.user.goal : user.goal) : ''
-    - var uDescription = user ? (user.user ? user.user.description : user.description) : ''
+    - var uWeight = goal ? (goal.goal ? goal.goal.weight : goal.weight) : ''
+    - var uGoal = goal ? (goal.goal ? goal.goal.goal : goal.goal) : ''
+    - var uDescription = goal ? (goal.goal ? goal.goal.description : goal.description) : ''
     h1.mb-4= formTitle
 
     // Display validation errors, if any
@@ -18,8 +18,8 @@ block content
             li #{err.msg}
 
     form(method="post", action=formAction)
-      if user && user.id
-        input(type="hidden", name="id", value=user.id)
+      if goal && goal.id
+        input(type="hidden", name="id", value=goal.id)
       .form-group
         label(for="weight") Weight
         input.form-control(type="text", name="weight", id="weight", value=uWeight, placeholder="Enter your current weight")

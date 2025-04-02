@@ -1,8 +1,9 @@
 const express = require('express');
-const userRouter = require('./user');
+//importing the goal route
+const goalRouter = require('./goal');
 
 const router = express.Router();
-
-router.use('/user', userRouter);
+//using goal route
+router.use('/goal', goalRouter);
 
 module.exports = router;

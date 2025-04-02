@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "id": "4292",
+        "weight": "12",
+        "goal": "Cardio",
+        "description": "sdad"
+    },
+    {
+        "id": "5993",
+        "weight": "123",
+        "goal": "Weight",
+        "description": "dsghdg"
+    }
+]
