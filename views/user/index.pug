@@ -1,0 +1,27 @@
+extends ../head.pug
+
+block content
+  .container.mt-4
+    h1.mb-4 Fitness App. Write down your goals!
+    h2.mb-4 Goals List
+    h3.mb-4 This web application was created to fulfill Web Technology module’s requirements and does not represent an actual company or service
+    a.btn.btn-primary.mb-3(href="/user/create") Create New Goal
+    table.table.table-striped
+      thead
+        tr
+          th ID
+          th Weight
+          th Goal Type
+          th Descprition (Optional)
+          th Actions
+      tbody
+        each user in users
+          tr
+            td= user.id
+            td= user.weight
+            td= user.goal
+            td= user.description
+            td
+              a.btn.btn-warning.btn-sm.mr-2(href=`/user/update/${user.id}`) Update goal
+              span &nbsp;
+              a.btn.btn-danger.btn-sm(href=`/api/user/delete/${user.id}`) Delete goal

@@ -1,0 +1,38 @@
+extends ../head.pug
+
+block content
+  .container.mt-4
+    - var formAction = user && user.id ? `/api/user/update/${user.id}` : '/api/user/create'
+    - var formTitle = user && user.id ? 'Update User' : 'Create Goal'
+    // Determine field values
+    - var uWeight = user ? (user.user ? user.user.weight : user.weight) : ''
+    - var uGoal = user ? (user.user ? user.user.goal : user.goal) : ''
+    - var uDescription = user ? (user.user ? user.user.description : user.description) : ''
+    h1.mb-4= formTitle
+
+    // Display validation errors, if any
+    if errors && errors.length
+      .alert.alert-danger
+        ul
+          each err in errors
+            li #{err.msg}
+
+    form(method="post", action=formAction)
+      if user && user.id
+        input(type="hidden", name="id", value=user.id)
+      .form-group
+        label(for="weight") Weight
+        input.form-control(type="text", name="weight", id="weight", value=uWeight, placeholder="Enter your current weight")
+      .form-group
+        label(for="goal") Goal Type
+        select.form-control(name="goal", id="goal")
+          option(value="") Select a goal type
+          option(value="Cardio" selected=goalType === 'Cardio') Cardio
+          option(value="Strength" selected=goalType === 'Strength') Strength
+          option(value="Flexibility" selected=goalType === 'Flexibility') Flexibility
+          option(value="Nutrition" selected=goalType === 'Nutrition') Nutrition
+          option(value="Weight" selected=goalType === 'Weight') Weight
+      .form-group
+        label(for="description") Description
+        input.form-control(type="text", name="description", id="description", value=uDescription, placeholder="Enter short description of your goal (Optional)")
+      button.btn.btn-primary(type="submit") Create New Goal
