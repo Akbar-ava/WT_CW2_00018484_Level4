@@ -1,6 +1,12 @@
 This is website for tracking the fintness goal. In this app you can add your fitness goal you want to achieve in the future. It tracks you current weight, goal type and add a description for you in order to clearify the goal in details. Also, if you decided to change your goal, it has ability to be updated, or if you completed it and do not want to see it more you could delete it from your list of goals.
 
-When it comes to running the app in your machine. You first of all should initializy npm and install packages like :body-parser, express, express-validator, nodemon, pug.
+When it comes to running the app in your machine. You first of all should initialize npm and install packages like :
+npm install body-parser,
+npm install express, npm install express-validator, 
+npm install nodemon,  
+npm install pug.
+To run app write in terminal command 'npm start'
+
 In this app there are list of dependencies : ("axios": "^1.8.4",
     "body-parser": "^2.2.0",
     "express": "^4.21.2",

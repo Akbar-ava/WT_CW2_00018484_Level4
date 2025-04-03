@@ -5,9 +5,9 @@ block content
     - var formAction = goal && goal.id ? `/api/goal/update/${goal.id}` : '/api/goal/create'
     - var formTitle = goal && goal.id ? 'Update goal' : 'Create Goal'
     // Determine field values
-    - var uWeight = goal ? (goal.goal ? goal.goal.weight : goal.weight) : ''
-    - var uGoal = goal ? (goal.goal ? goal.goal.goal : goal.goal) : ''
-    - var uDescription = goal ? (goal.goal ? goal.goal.description : goal.description) : ''
+    - var uWeight = goal ? (goal.goal ? goal.weight : goal.weight) : ''
+    - var uGoal = goal ? (goal.goal ? goal.goal : goal.goal) : ''
+    - var uDescription = goal ? (goal.goal ? goal.description : goal.description) : ''
     h1.mb-4= formTitle
 
     // Display validation errors, if any
@@ -25,13 +25,13 @@ block content
         input.form-control(type="text", name="weight", id="weight", value=uWeight, placeholder="Enter your current weight")
       .form-group
         label(for="goal") Goal Type
-        select.form-control(name="goal", id="goal")
+        select.form-control(name="goal", id="goal", value=uGoal)
           option(value="") Select a goal type
-          option(value="Cardio" selected=goalType === 'Cardio') Cardio
-          option(value="Strength" selected=goalType === 'Strength') Strength
-          option(value="Flexibility" selected=goalType === 'Flexibility') Flexibility
-          option(value="Nutrition" selected=goalType === 'Nutrition') Nutrition
-          option(value="Weight" selected=goalType === 'Weight') Weight
+          option(value="Cardio" selected=uGoal === 'Cardio') Cardio
+          option(value="Strength" selected=uGoal === 'Strength') Strength
+          option(value="Flexibility" selected=uGoal === 'Flexibility') Flexibility
+          option(value="Nutrition" selected=uGoal === 'Nutrition') Nutrition
+          option(value="Weight" selected=uGoal === 'Weight') Weight
       .form-group
         label(for="description") Description
         input.form-control(type="text", name="description", id="description", value=uDescription, placeholder="Enter short description of your goal (Optional)")
