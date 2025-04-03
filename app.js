@@ -29,3 +29,17 @@ app.use('/', webRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+//cronjobing every 5 mimute in order to prevent webiste hosting going to sleep after 15 minutes
+const axios = require('axios');
+
+const selfPing = () => {
+  const url = 'https://wt-cw2-00018484-level4.onrender.com/goal';
+  setInterval(() => {
+    axios.get(url)
+      .then(() => console.log(`[PING] Keep-alive ping to ${url}`))
+      .catch((err) => console.error('[PING] Error pinging app:', err.message));
+  }, 1000 * 60 * 5);
+};
+
+selfPing();
