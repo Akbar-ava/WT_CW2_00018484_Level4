@@ -27,5 +27,5 @@ app.use('/api', indexRoutes);
 app.use('/', webRoutes);
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/goal`);
+    console.log(`Server is running on port ${port}`);
 });
