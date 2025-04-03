@@ -4,7 +4,7 @@ const path = require('path');
 const indexRoutes = require('./routes/api');
 const webRoutes = require('./routes/web');
 
-const port = 3000
+const port = process.env.PORT || 3000;
 
 const app = express();
 
