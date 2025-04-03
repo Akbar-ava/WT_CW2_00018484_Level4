@@ -19,7 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // using static files css,js
-app.use('/css', express.static('public/styles'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static('public/javascripts'));
 
 // using api's

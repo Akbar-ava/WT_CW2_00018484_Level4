@@ -1,0 +1,28 @@
+h1 {
+  color: #6c5ce7;
+}
+
+h2 {
+  color: #39b33f;
+}
+
+h3 {
+  color: #f5b049;
+}
+
+.btn-primary {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #5e50b8;
+  border-color: #5e50b8;
+}
+
+.btn-warning {
+  background-color: rgb(24, 209, 24);
+  color: rgb(253, 248, 248);
+  border-color: darkslateblue;
+}
